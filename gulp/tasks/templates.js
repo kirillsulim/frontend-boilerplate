@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    path = require('path'),
     glob = require('glob'),
     handlebars = require('gulp-compile-handlebars'),
     layouts = require('handlebars-layouts'),
@@ -14,7 +15,7 @@ module.exports = function() {
     function(er, files){
       files.forEach(function(file){
         try {
-          data = require(templatesDir + file.replace('.hbs', '.js'));
+          data = require(path.resolve(templatesDir, file.replace('.hbs', '.js')));
         }
         catch(e) {
           data = {}
